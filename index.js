@@ -9,7 +9,7 @@ const replies = ["Konuşamam", "Yürü git", "Benimle uğraşma", "Seni sevmiyor
 client.on("ready", ready => {
   console.log("Bot hazır!");
 
-  client.user.setActivity("Şerefsiz mümin | ~help");
+  client.user.setActivity("discord.gg/dRTjqU7 | ~help");
 });
 
 client.on("message", message => {
@@ -19,6 +19,7 @@ client.on("message", message => {
   } 
   else if (message.channel.id == "690495134999248896" && message.content === prefix + "eren") {
     message.channel.send("eren");
+	
   }
   else if (message.channel.id == "690495134999248896" && message.content === prefix + "help") {
     message.channel.send(
