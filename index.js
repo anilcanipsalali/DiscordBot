@@ -34,21 +34,21 @@ client.on("message", message => {
 			})
 		}else
 
+		if(message.content === prefix + 'help')
+		{
+			message.channel.send(`**~konus** - Saçma sapan bir bot komutu :laughing:.\n**~ping** - Server'daki pingi gösterir.\n**~severbilgi** - Server'daki kişi sayısını gösterir.\n**~temizle <mesaj sayısı>** - Kanaldaki mesajları siler.(Henüz yapım aşamasında..:timer:)`)
+		}else
+
 		if(message.content === prefix + 'temizle' && message.member.hasPermission('Admins'))
 		{
 			if(!numberofmessages) return message.reply(`Silinecek mesaj sayısını girmediniz.`)
 
-			if(isNaN(numberofmessages)) return message.reply(`Girdiğiniz parametre sayı değil.`)
+			else if(isNaN(numberofmessages)) return message.reply(`Girdiğiniz parametre sayı değil.`)
 
-			if(numberofmessages > 100) return message.reply(`100\'den fazla mesaj silemezsiniz.`)
+			else if(numberofmessages > 100) return message.reply(`100\'den fazla mesaj silemezsiniz.`)
 
-			if(numberofmessages < 1) return message.reply(`En az 1 mesaj silebilirsiniz.`)
-
-		}else
-
-		if(message.content === prefix + 'help')
-		{
-			message.channel.send(`**~konus** - Saçma sapan bir bot komutu :laughing:.\n**~ping** - Server'daki pingi gösterir.\n**~severbilgi** - Server'daki kişi sayısını gösterir.\n**~temizle <mesaj sayısı>** - Kanaldaki mesajları siler.(Henüz yapım aşamasında..:timer:)`)
+			else if(numberofmessages < 1) return message.reply(`En az 1 mesaj silebilirsiniz.`)
+			
 		}
 
 	}else return;
