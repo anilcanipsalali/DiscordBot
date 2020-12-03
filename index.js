@@ -13,7 +13,7 @@ client.on("ready", ready => {
 });
 
 client.on("message", message => {
-	if(message.channel.id == '690495134999248896' && !message.author.bot)
+	if(message.channel.id == '784105610429988905' && !message.author.bot)
 	{
 		if(message.content === prefix + 'konus')
 		{
@@ -21,13 +21,37 @@ client.on("message", message => {
         	message.reply(replies[index]);
 		}else
 
-		if(message.content === prefix + 'eren')
+		if(message.content === prefix + 'ping')
 		{
-			message.channel.send('eren');
+			const timeTaken = Date.now() - message.createdTimestamp;
+			message.reply(`Ping: ${timeTaken} ms.`);
+		}else
+		
+		if(message.content === prefix + 'serverbilgi')
+		{
+			client.guilds.cache.forEach((guild) => {
+				message.channel.send(`${guild.name} server\'ında ${guild.memberCount} kişi var.`)
+			})
+		}else
+
+		if(message.content === prefix + 'temizle' && message.member.hasPermission('Admins'))
+		{
+			if(!numberofmessages) return message.reply(`Silinecek mesaj sayısını girmediniz.`)
+
+			if(isNaN(numberofmessages)) return message.reply(`Girdiğiniz parametre sayı değil.`)
+
+			if(numberofmessages > 100) return message.reply(`100\'den fazla mesaj silemezsiniz.`)
+
+			if(numberofmessages < 1) return message.reply(`En az 1 mesaj silebilirsiniz.`)
+
+		}else
+
+		if(message.content === prefix + 'help')
+		{
+			message.channel.send(`**~konus** - Saçma sapan bir bot komutu :laughing:.\n**~ping** - Server'daki pingi gösterir.\n**~severbilgi** - Server'daki kişi sayısını gösterir.\n**~temizle <mesaj sayısı>** - Kanaldaki mesajları siler.(Henüz yapım aşamasında..:timer:)`)
 		}
 
-		
-	} else return;
+	}else return;
 });
 
 //Functions
