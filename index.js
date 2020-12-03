@@ -13,19 +13,21 @@ client.on("ready", ready => {
 });
 
 client.on("message", message => {
-  if (message.channel.id == "690495134999248896" && message.content === prefix + "konus") {
-    const index = Math.floor(Math.random() * replies.length);
-    message.reply(replies[index]);
-  } 
-  else if (message.channel.id == "690495134999248896" && message.content === prefix + "eren") {
-    message.channel.send("eren");
-	
-  }
-  else if (message.channel.id == "690495134999248896" && message.content === prefix + "help") {
-    message.channel.send(
-      `**~help** - Yardım menüsünü gösterir.\n**~konus** - Saçma sapan bir bot komutu :).\n**~eren** - Size ereni bastırır.`
-    );
-  }
+	if(message.channel.id == '690495134999248896' && !message.author.bot)
+	{
+		if(message.content === prefix + 'konus')
+		{
+			const index = Math.floor(Math.random()* replies.length);
+        	message.reply(replies[index]);
+		}else
+
+		if(message.content === prefix + 'eren')
+		{
+			message.channel.send('eren');
+		}
+
+		
+	} else return;
 });
 
 //Functions
