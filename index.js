@@ -1,9 +1,16 @@
 //Constants
 const keep_alive = require('./keep_alive.js')
-const Discord = require("discord.js");
-const fs = require('fs');
-const client = new Discord.Client();
+const Discord= require("discord.js");
+const client = new Discord.Client({disableEveryone: true})
 const prefix = "~";
+const ff = require('ffmpeg-static')
+var version = '1.1';
+
+//Music Bot
+const ytdl = require('ytdl-core')
+
+//Execute js files
+const fs = require('fs');
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 for(const file of commandFiles){
@@ -12,12 +19,12 @@ for(const file of commandFiles){
 }
 //Client on
 client.on("ready", ready => {
-  console.log("Bot hazır!");
+  console.log("Bot hazır! " + version);
 
   client.user.setActivity("Trouble5 | ~help");
 });
 
-client.on('guildMemberAdd', guildMember =>{
+client.on('guildMemberAdd', guildMember => {
 	let hosgeldinRole = guildMember.guild.roles.cache.find(role => role.name === 'Active/Loyal');
 	guildMember.roles.add(hosgeldinRole);
 	guildMember.guild.channels.cache.get('573639066583695361').send(`<@${guildMember.user.id}> Sunucuya hoş geldin! İyi eğlenceler!`)
@@ -39,6 +46,20 @@ client.on("message", message => {
 
 		if(command === 'ping') {
 			client.commands.get('ping').execute(message, args);
+		}else
+
+		if(command === 'serverbilgi') {
+			client.commands.get('serverbilgi').execute(message, args, Discord);
+		}else
+
+		if(command === 'baslat')
+		{
+			client.commands.get('baslat').execute(message, args, client, ytdl);
+		}else
+		
+		if(command === 'durdur')
+		{
+			client.commands.get('durdur').execute(message, args);
 		}
 		
 	}else return;
