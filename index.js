@@ -54,7 +54,7 @@ client.on("message", message => {
 
 		if(command === 'discordlink') {
 			client.commands.get('discordlink').execute(message, args)
-		}
+		}else
 
 		if(command === 'baslat')
 		{
