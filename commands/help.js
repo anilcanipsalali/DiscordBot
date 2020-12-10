@@ -8,7 +8,8 @@ module.exports = {
 		.setTitle('Yardım')
 		.setDescription('Aşağıdaki komutları kullanarak botu kullanabilirsiniz.')
 		.addFields(
-			{name: '~help', value:'-Bot komutlarını öğrenmek için bir yardımcı komut.'},
+			{name: '~help', value:'Discord davet linkini kullanıcıya mesaj olarak yollayan bir komut.'},
+			{name: '~discordlink', value:`Server hakkında bilgi veren bir komut.`},
 			{name: '~serverbilgi', value:`Server hakkında bilgi veren bir komut.`},
 			{name: '~temizle <sayı>', value:'-Mesaj kanalindeki ögeleri silen bir komut '},
 			{name: '~ping', value:`Bot'un server'a olan gecikmesini gösteren bir komut.`},

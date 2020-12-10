@@ -52,6 +52,10 @@ client.on("message", message => {
 			client.commands.get('serverbilgi').execute(message, args, Discord);
 		}else
 
+		if(command === 'discordlink') {
+			client.commands.get('discordlink').execute(message, args)
+		}
+
 		if(command === 'baslat')
 		{
 			client.commands.get('baslat').execute(message, args, client, ytdl);
