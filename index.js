@@ -1,6 +1,7 @@
 //Constants
 const keep_alive = require('./keep_alive.js')
 const Discord= require("discord.js");
+const fetch = require('node-fetch');
 const client = new Discord.Client({disableEveryone: true})
 const prefix = "~";
 const ff = require('ffmpeg-static')
@@ -31,7 +32,7 @@ client.on('guildMemberAdd', guildMember => {
 })
 
 client.on("message", message => {
-	if(message.channel.id == '784105610429988905' && !message.author.bot)
+	if(!message.author.bot)
 	{
 		const args = message.content.slice(prefix.length).split(/ +/);
 		const command = args.shift().toLowerCase();
@@ -64,6 +65,11 @@ client.on("message", message => {
 		if(command === 'durdur')
 		{
 			client.commands.get('durdur').execute(message, args);
+		}
+		
+		if(command === 'gif')
+		{
+			client.commands.get('gif').execute(message,args,fetch);
 		}
 		
 	}else return;
